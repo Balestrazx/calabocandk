@@ -1,0 +1,209 @@
+/*--------------------------------------------------------*/
+/* TABLE OF CONTENTS: */
+/*--------------------------------------------------------*/
+/* 00 - INCLUDE FONTS */
+/* 01 - CSS RESET BY ERIC MEYER */
+/* 02 - HEADER */
+/* 03 - FOOTER */
+/* 04 - BLOG */
+/* 05 - next */
+/* 06 - next */
+/* 07 - next */
+/* 07 - next */
+/* 07 - next */
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+/* 01 - CSS RESET BY ERIC MEYER */
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+
+body[data-preloader="load"] {
+    animation-duration: 0ms !important;
+}
+
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+/* 02 - HEADER */
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+
+.softease-header {
+}
+.softease-header .softease-logo{
+    float: left;
+}
+.softease-header .softease-navigation li{
+    display: block;
+    float: left;
+}
+.softease-header .softease-navigation {}
+.softease-header .softease-social-list{}
+.softease-header {}
+
+#loading {
+    z-index: 999999;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    width: 100%;
+    height: 100%;
+}
+
+#loading .preloader {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#loading .load {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+#loading .load.one {
+    left: 0;
+    top: 0;
+    animation: rotate-one 1s linear infinite;
+    border-bottom: 3px solid #4aa3df;
+}
+
+#loading .load.two {
+    right: 0;
+    top: 0;
+    animation: rotate-two 1s linear infinite;
+    border-right: 3px solid #4aa3df;
+}
+
+#loading .load.three {
+    right: 0;
+    bottom: 0;
+    animation: rotate-three 1s linear infinite;
+    border-top: 3px solid #4aa3df;
+}
+
+@keyframes rotate-one {
+    0% {
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+    }
+}
+
+@keyframes rotate-two {
+    0% {
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+    }
+}
+
+@keyframes rotate-three {
+    0% {
+        transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+    }
+}
+
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+/* 03 - FOOTER */
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+
+
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+/* 04 - BLOG */
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+
+.blog-post {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+/* Single post */
+.post-detailed {}
+.post-detailed img{
+    max-width: 100%;
+    height: auto;
+}
+.post-detailed .wp-caption{
+    padding-bottom: 3px;
+}
+.post-detailed .post-info .post-category,
+.post-detailed .post-info .post-date{
+    float: left;
+}
+.post-detailed .post-title{
+    clear: both;
+}
+.post-detailed {}
+
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+/* 05 - next */
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+
+
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+/* 06 - next */
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+/* 07 - next */
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+/* 08 - next */
+/*-------------------------------------------------------------------------------------------------------------------------------*/

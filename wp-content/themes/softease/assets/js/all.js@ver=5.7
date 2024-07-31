@@ -1,0 +1,292 @@
+;(function($, window, document, undefined) {
+	"use strict";
+
+	/*============================*/
+	/* INIT */
+	/*============================*/
+
+	var swipers = [], winScr, _isresponsive, smPoint = 768, mdPoint = 992, lgPoint = 1200, addPoint = 1600, _ismobile = navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i);
+
+	/**
+	 *
+	 * PageCalculations function
+	 * @since 1.0.0
+	 * @version 1.0.1
+	 * @var winW
+	 * @var winH
+	 * @var winS
+	 * @var pageCalculations
+	 * @var onEvent
+	 **/
+	if (typeof pageCalculations !== 'function') {
+
+		var winW, winH, winS, pageCalculations,onEvent = window.addEventListener;
+
+		pageCalculations = function(func){
+			
+			winW = window.innerWidth;
+			winH = window.innerHeight;
+			winS = document.body.scrollTop;
+
+			if (!func) return;
+
+			onEvent('load', func, true); // window onload
+			onEvent('resize', func, true); // window resize
+			onEvent("orientationchange", func, false); // window orientationchange
+
+		}// end pageCalculations
+
+		pageCalculations(function(){
+			pageCalculations();
+		});
+
+	}
+
+	/***********************************/
+	/*     RESPONSIVE MOBILE MENU      */
+	/**********************************/
+
+			$('.nav-menu-icon').on('click', function() {
+                if( $(window).width() <= 992 ) {
+                    $(this).toggleClass('active');
+                    $('.softease-header .navigation').toggleClass('show-menu');
+                    $('.softease-header').toggleClass('active');
+                }
+            });
+            $('.menu-item a').on('click', function() {
+                if( $(window).width() <= 992 ) {
+                    
+                    var sub_menu = $(this).closest('.menu-item').find('.sub-menu');
+
+                    if( sub_menu.hasClass('active') ) {
+                        sub_menu.removeClass('active');
+                    } else {
+                        $('.sub-menu').removeClass('active');
+                        sub_menu.addClass('active');
+                    }
+
+		          }
+            });
+
+	/***********************************/
+	/*         BACKGROUND IMAGE        */
+	/**********************************/
+
+	 $(".img-bg").each(function(){
+
+        $(this).css("background-image", "url("+$(this).find("img").attr('src')+")");
+
+    });
+
+   $('.bg-item').each(function() {
+        var bgSrc = $(this).attr('src');
+        $(this).parent().addClass('background-banner').css({
+            'background-image': 'url(' + bgSrc + ')'
+        });
+        $(this).hide();
+    });
+
+	/***********************************/
+	/*            GOOGLE MAP          */
+	/**********************************/
+
+if( $('#fullWidthMap').length ) {
+  $('#fullWidthMap').each(function() {
+    initialize(this);
+  });
+}
+ 
+function initialize(_this) {
+    
+    var stylesArray = {
+      //style 1
+      'style-1' : [
+        {
+          "featureType": "water",
+          "elementType": "geometry.fill",
+          "stylers": [
+            { "color": "#d3d3d3" }
+          ]
+        },{
+          "featureType": "transit",
+          "stylers": [
+            { "color": "#808080" },
+            { "visibility": "off" }
+          ]
+        },{
+          "featureType": "road.highway",
+          "elementType": "geometry.stroke",
+          "stylers": [
+            { "visibility": "on" },
+            { "color": "#b3b3b3" }
+          ]
+        },{
+          "featureType": "road.highway",
+          "elementType": "geometry.fill",
+          "stylers": [
+            { "color": "#ffffff" }
+          ]
+        },{
+          "featureType": "road.local",
+          "elementType": "geometry.fill",
+          "stylers": [
+            { "visibility": "on" },
+            { "color": "#ffffff" },
+            { "weight": 1.8 }
+          ]
+        },{
+          "featureType": "road.local",
+          "elementType": "geometry.stroke",
+          "stylers": [
+            { "color": "#d7d7d7" }
+          ]
+        },{
+          "featureType": "poi",
+          "elementType": "geometry.fill",
+          "stylers": [
+            { "visibility": "on" },
+            { "color": "#ebebeb" }
+          ]
+        },{
+          "featureType": "administrative",
+          "elementType": "geometry",
+          "stylers": [
+            { "color": "#a7a7a7" }
+          ]
+        },{
+          "featureType": "road.arterial",
+          "elementType": "geometry.fill",
+          "stylers": [
+            { "color": "#ffffff" }
+          ]
+        },{
+          "featureType": "road.arterial",
+          "elementType": "geometry.fill",
+          "stylers": [
+            { "color": "#ffffff" }
+          ]
+        },{
+          "featureType": "landscape",
+          "elementType": "geometry.fill",
+          "stylers": [
+            { "visibility": "on" },
+            { "color": "#efefef" }
+          ]
+        },{
+          "featureType": "road",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            { "color": "#696969" }
+          ]
+        },{
+          "featureType": "administrative",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            { "visibility": "on" },
+            { "color": "#737373" }
+          ]
+        },{
+          "featureType": "poi",
+          "elementType": "labels.icon",
+          "stylers": [
+            { "visibility": "off" }
+          ]
+        },{
+          "featureType": "poi",
+          "elementType": "labels",
+          "stylers": [
+            { "visibility": "off" }
+          ]
+        },{
+          "featureType": "road.arterial",
+          "elementType": "geometry.stroke",
+          "stylers": [
+            { "color": "#d6d6d6" }
+          ]
+        },{
+          "featureType": "road",
+          "elementType": "labels.icon",
+          "stylers": [
+            { "visibility": "off" }
+          ]
+        },{
+        },{
+          "featureType": "poi",
+          "elementType": "geometry.fill",
+          "stylers": [
+            { "color": "#dadada" }
+          ]
+        }
+      ],
+    };
+ 
+    var styles ,map, marker, infowindow,
+      lat = $(_this).attr("data-lat"),
+        lng = $(_this).attr("data-lng"),
+      contentString = $(_this).attr("data-string"),
+      image = $(_this).attr("data-marker"),
+      styles_attr = $(_this).attr("data-style"),
+      zoomLevel = parseInt($(_this).attr("data-zoom"),10),
+      myLatlng = new google.maps.LatLng(lat,lng);
+      
+ 
+    // style_1
+    if (styles_attr == 'style-1') {
+      styles = stylesArray[styles_attr];
+    }
+    // custom
+    if (typeof hawa_style_map != 'undefined' && styles_attr == 'custom') {
+      styles = hawa_style_map;
+    }
+    // or default style
+    
+    var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
+      
+    var mapOptions = {
+      zoom: zoomLevel,
+      disableDefaultUI: true,
+      center: myLatlng,
+          scrollwheel: false,
+      mapTypeControlOptions: {
+          mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+      }
+    };
+    
+    map = new google.maps.Map(_this, mapOptions);
+ 
+    map.mapTypes.set('map_style', styledMap);
+    map.setMapTypeId('map_style');
+ 
+    infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+    
+      
+      marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      icon: image
+    });
+ 
+    google.maps.event.addListener(marker, 'click', function() {
+      infowindow.open(map,marker);
+    });
+ 
+  }
+
+  /***********************************/
+  /*        ABSOLUTE IMG BLOCK      */
+  /**********************************/  
+
+  if( $('.absolute-image').length ) {
+      $('.absolute-image').each(function(){
+          $(this).closest('.wpb_wrapper').css('position','relative');
+          var $image = $(this).find('img');
+          $(this).css({
+              'position': 'absolute',
+              'width': $(window).width() / 2
+          });
+      });
+  }
+
+})(jQuery, window, document);
